@@ -1,5 +1,5 @@
 ### Rain Gauge
-- Welcome to the Rain Gauge Application Wiki.
+- Welcome to the Rain Gauge Application
 - Latest Version: v1.0.0.40
 ### New Changes
 - Non yet.
