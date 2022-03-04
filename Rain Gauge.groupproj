@@ -1,0 +1,36 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{8D64A288-75A7-458E-8C59-B800998A0E15}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="RainGauge.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="RainGauge">
+			<MSBuild Projects="RainGauge.dproj"/>
+		</Target>
+		<Target Name="RainGauge:Clean">
+			<MSBuild Targets="Clean" Projects="RainGauge.dproj"/>
+		</Target>
+		<Target Name="RainGauge:Make">
+			<MSBuild Targets="Make" Projects="RainGauge.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="RainGauge"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="RainGauge:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="RainGauge:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
