@@ -10,8 +10,7 @@
 - +27 66 202 1724
 ***
 # What It Looks Like
-
-
+![Screenshot](Main.jpg)
 ***
 # Installation
 Please read the following carefully. 
