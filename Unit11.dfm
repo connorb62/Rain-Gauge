@@ -1317,6 +1317,8 @@ object frmMain: TfrmMain
   OldCreateOrder = False
   WindowState = wsMaximized
   OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object statMain: TStatusBar

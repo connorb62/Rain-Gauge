@@ -129,6 +129,8 @@ type
     procedure Summary1Click(Sender: TObject);
     procedure ContactSupport1Click(Sender: TObject);
     procedure Summary2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -141,7 +143,7 @@ type
       rCap, rReading : Real;
       Date : TDate;
       rRainfall : Real;
-      iRainfall : Integer;
+      iRainfall, iRowCount : Integer;
   end;
 
 var
@@ -157,6 +159,7 @@ uses
 procedure TfrmMain.About1Click(Sender: TObject);
 begin
   frmAbout.Show;
+  iRowCount := str1.RowCount - 1;
 end;
 
 procedure TfrmMain.AllRecords1Click(Sender: TObject);
@@ -267,48 +270,57 @@ var
   iPos, iButton : Integer;
 begin
   sUsername := InputBox('Add New', 'Enter Name:', '');
+ if Length(sUsername) > 0 then
+  begin
+    if FileExists('Users.txt') <> True then
+      begin
+        MessageDlg('Error: Cannot Add New User' + #13 + 'Erorr Code: '
+        + 'listntfnd_02', mtError, [mbOK], 0);
+      end
+    else
+      begin
+        AssignFile(txtFile4, 'Users.txt');
+        Reset(txtFile4);
+      end;
 
-  if FileExists('Users.txt') <> True then
-    begin
-      MessageDlg('Error: Cannot Add New Gauge' + #13 + 'Erorr Code: '
-      + 'listntfnd_01', mtError, [mbOK], 0);
-    end
-  else
-    begin
-      AssignFile(txtFile4, 'Users.txt');
-      Reset(txtFile4);
-    end;
+    while not Eof(txtFile4) do
+      begin
+        Readln(txtFile4, sTextLine);
+        if sTextLine = sUsername then
+          begin
+             iButton := MessageDlg('User already exists' + #13 +
+            'Add new anyway?', mtWarning, [mbYes, mbNo], 0);
+          end;
+      end;
+    CloseFile(txtFile4);
 
-  while not Eof(txtFile4) do
-    begin
-      Readln(txtFile4, sTextLine);
-      if sTextLine = sUsername then
-        begin
-           iButton := MessageDlg('User already exists' + #13 +
-          'Add new anyway?', mtWarning, [mbYes, mbNo], 0);
-        end;
-    end;
-  CloseFile(txtFile4);
-
-  AssignFile(txtFile4, 'Users.txt');
-  Append(txtFile4);
+    AssignFile(txtFile4, 'Users.txt');
+    Append(txtFile4);
 
 
 
-  if iButton = mrYes then
-    begin
-      Inc(iCount);
-      sUsername := sUsername + '(' + IntToStr(iCount1) + ')';
-      Writeln(txtFile4, sUsername);
-    end
-  else
-    begin
-      sUsername := sUsername;
-      Writeln(txtFile4, sUsername);
-    end;
-  CloseFile(txtFile4);
-  MessageDlg('Sucessfully added new user' + #13 + '"' + sUsername + '"',
-  mtInformation, [mbOK], 0);
+    if iButton = mrYes then
+      begin
+        Inc(iCount);
+        sUsername := sUsername + '(' + IntToStr(iCount1) + ')';
+        Writeln(txtFile4, sUsername);
+      end
+    else
+      begin
+        sUsername := sUsername;
+        Writeln(txtFile4, sUsername);
+      end;
+    CloseFile(txtFile4);
+    MessageDlg('Sucessfully added new user' + #13 + '"' + sUsername + '"',
+    mtInformation, [mbOK], 0);
+  end
+ else
+  begin
+    MessageDlg('Error: Please enter a suitable username' + #13 + 'Erorr Code: '
+    + 'usererr_01', mtError, [mbOK], 0);
+  end;
+
+
 end;
 
 procedure TfrmMain.btnClearAllClick(Sender: TObject);
@@ -487,7 +499,10 @@ begin
   sMaxCap := InputBox('Add New', 'Max Capacity (mm): ', '');
   sWrite := sName + '$' + sMaxCap;
   sSpecial := sName + '(' + IntToStr(iCount) + ')' + '$' + sMaxCap;
-    for i := 1 to Length(sMaxCap) do
+
+  if (Length(sName) > 0) and (Length(sMaxCap) > 0) then
+    begin
+      for i := 1 to Length(sMaxCap) do
       begin
         if not (Ord(sMaxCap[i]) IN [48..57]) then
           begin
@@ -498,44 +513,51 @@ begin
           end
       end;
 
-  if FileExists('Gauges.txt') <> True then
-    begin
-      MessageDlg('Error: Cannot Add New Gauge' + #13 + 'Erorr Code: '
-      + 'listntfnd_01', mtError, [mbOK], 0);
-    end
-  else
-    begin
-      AssignFile(txtFile, 'Gauges.txt');
-      Reset(txtFile);
-    end;
-
-  while not Eof(txtFile) do
-    begin
-      Readln(txtFile, sLine);
-      iPos := Pos('$', sLine);
-      sNameText := Copy(sLine, 1, iPos - 1);
-      if sNameText = sName then
+      if FileExists('Gauges.txt') <> True then
         begin
-          iButton := MessageDlg('Gauge already exists' + #13 +
-          'Add new anyway?', mtWarning, [mbYes, mbNo], 0);
+          MessageDlg('Error: Cannot Add New Gauge' + #13 + 'Erorr Code: '
+          + 'listntfnd_01', mtError, [mbOK], 0);
+        end
+      else
+        begin
+          AssignFile(txtFile, 'Gauges.txt');
+          Reset(txtFile);
         end;
-    end;
-  CloseFile(txtFile);
 
-  AssignFile(txtFile, 'Gauges.txt');
-  Append(txtFile);
-  if iButton = mrYes then
-    begin
-      Inc(iCount);
-      Writeln(txtFile, sSpecial);
+      while not Eof(txtFile) do
+        begin
+          Readln(txtFile, sLine);
+          iPos := Pos('$', sLine);
+          sNameText := Copy(sLine, 1, iPos - 1);
+          if sNameText = sName then
+            begin
+              iButton := MessageDlg('Gauge already exists' + #13 +
+              'Add new anyway?', mtWarning, [mbYes, mbNo], 0);
+            end;
+        end;
+      CloseFile(txtFile);
+
+      AssignFile(txtFile, 'Gauges.txt');
+      Append(txtFile);
+      if iButton = mrYes then
+        begin
+          Inc(iCount);
+          Writeln(txtFile, sSpecial);
+        end
+      else
+        begin
+          Writeln(txtFile, sWrite);
+        end;
+      CloseFile(txtFile);
+      MessageDlg('Successfully added Gauge' + #13 +
+      '"Refresh" to update Gauge List', mtInformation, [mbOK], 0);
     end
   else
     begin
-      Writeln(txtFile, sWrite);
+      MessageDlg('Error: Please enter proper value/s' + #13 + 'Erorr Code: '
+      + 'usererr_02', mtError, [mbOK], 0);
     end;
-  CloseFile(txtFile);
-  MessageDlg('Successfully added Gauge' + #13 +
-  '"Refresh" to update Gauge List', mtInformation, [mbOK], 0);
+
 end;
 
 procedure TfrmMain.btnRefreshClick(Sender: TObject);
@@ -794,6 +816,76 @@ begin
     end;
   CloseFile(txtFile6);
 
+end;
+
+procedure TfrmMain.FormCreate(Sender: TObject);
+var
+  sString, sGaugeName, sMaxCap1, sTLine : string;
+  iPos : Integer;
+  txtFile2, txtFile6 : TextFile;
+begin
+  bGetMax := False;
+  bApplied := False;
+  dtpDate.Date := Now;
+  dtpTime.Time := Now;
+  cbbUsers.Text := 'User';
+  cbbGauges.Text := 'Gauge';
+  iRow := 0;
+  iCol := 0;
+  str1.RowCount := 1;
+  str1.FixedRows := 0;
+  iCount1 := 1;
+  with str1 do
+    begin
+      Cells[0, 0] := 'User';
+      Cells[1, 0] := 'Gauge Name';
+      Cells[2, 0] := 'Date';
+      Cells[3, 0] := 'Time';
+      Cells[4, 0] := 'Reading(mm)';
+      Cells[5, 0] := 'Weather';
+      Cells[6, 0] := 'Empty Status';
+      Cells[7, 0] := 'Gauge Max (mm)';
+      Cells[8, 0] := '% Capacity';
+    end;
+  iCount := 1;
+   // Add/Update Gauges in Gauge List
+  if FileExists('Gauges.txt') <> True then
+    begin
+      MessageDlg('Error: Cannot Add New Gauge' + #13 + 'Erorr Code: '
+      + 'listntfnd_01', mtError, [mbOK], 0);
+    end
+  else
+    begin
+      AssignFile(txtFile2, 'Gauges.txt');
+      Reset(txtFile2);
+    end;
+
+  while not Eof(txtFile2) do
+    begin
+      Readln(txtFile2, sString);
+      iPos := Pos('$', sString);
+      sGaugeName := Copy(sString, 1, iPos - 1);
+      Delete(sString, 1, iPos + 1);
+
+      sMaxCap1 := sString;
+      cbbGauges.Items.Add(sGaugeName);
+    end;
+  CloseFile(txtFile2);
+  AssignFile(txtFile6, 'Users.txt');
+  Reset(txtFile6);
+
+  while not Eof(txtFile6) do
+    begin
+      Readln(txtFile6, sTLine);
+      cbbUsers.Items.Add(sTLine);
+    end;
+  CloseFile(txtFile6);
+
+end;
+
+procedure TfrmMain.FormShow(Sender: TObject);
+begin
+  str1.RowCount := iRowCount;
 end;
 
 procedure TfrmMain.Gauge1Click(Sender: TObject);
