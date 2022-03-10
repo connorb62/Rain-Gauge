@@ -1,8 +1,8 @@
 ### Rain Gauge
 - Welcome to the Rain Gauge Application
-- Latest Version: v1.0.0.40
+- Latest Version: v1.0.0.60
 ### New Changes
-- Non yet.
+- Bug Fixes 
 ### Information
 - © 2022 Connor Bell
 - cbell@jeppeboys.co.za 
@@ -38,11 +38,11 @@ Updates may be regular and will always be made available on the GitHub platform.
 ***
 
 # Disclaimer
-Best effort has been made to avoid application crashing and misbehaviour, but responsibility cannot be accepted for unexpected error or crashes while using the application. Please report all error, crashes or bugs to 
-- cbell@jeppeboys.co.za
+Whil every effort has been made to avoid application crashing and misbehaviour responsibility cannot be accepted for such events while using the application. Please report all errors, crashes or bugs to the `Issues` section of this repo. 
 
 # Feedback
 Feedback is greatly appreciated. Please feel free to send feedback in any regard to: 
 - cbell@jeppeboys.co.za
 
 - Published (4 March 2022)
+- Updates (10 March 2022)
