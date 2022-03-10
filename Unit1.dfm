@@ -1,7 +1,7 @@
 object frmAbout: TfrmAbout
   Left = 0
   Top = 0
-  BorderStyle = bsDialog
+  BorderStyle = bsToolWindow
   Caption = 'About'
   ClientHeight = 311
   ClientWidth = 357
@@ -1314,7 +1314,11 @@ object frmAbout: TfrmAbout
     0000000000000000000000000000000000000000000000000000000000000000
     0000000000000000000000000000000000000000000000000000000000000000
     000000000000000000000000000000000000000000000000000000000000}
+  KeyPreview = True
   OldCreateOrder = False
+  Position = poMainFormCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object imgMain: TImage
@@ -2494,5 +2498,14 @@ object frmAbout: TfrmAbout
     PlainText = True
     ReadOnly = True
     TabOrder = 0
+  end
+  object btnClose: TButton
+    Left = 128
+    Top = 278
+    Width = 75
+    Height = 25
+    Caption = 'Close'
+    TabOrder = 1
+    OnClick = btnCloseClick
   end
 end
