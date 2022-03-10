@@ -1,4 +1,4 @@
-### Rain Gauge
+### ![Logo](Untitled-2.png) Rain Gauge
 - Welcome to the Rain Gauge Application
 - Latest Version: v1.0.0.60
 ### New Changes
