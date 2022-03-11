@@ -13,7 +13,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, ExtCtrls, StdCtrls, Menus, ComCtrls, Grids, Printers, Spin, TeEngine,
-  Series, TeeProcs, Chart, DateUtils;
+  Series, TeeProcs, Chart, DateUtils, ImgList, ToolWin, pngimage;
 
 type
   TfrmMain = class(TForm)
@@ -39,13 +39,7 @@ type
     Help1: TMenuItem;
     ContactSupport1: TMenuItem;
     About1: TMenuItem;
-    pnlMain: TPanel;
-    btnSave: TButton;
-    btnLoad: TButton;
-    cbbUsers: TComboBox;
     btnAddUser: TButton;
-    btnAddRow: TButton;
-    btnClearAll: TButton;
     grpGrid: TGroupBox;
     grpInput: TGroupBox;
     str1: TStringGrid;
@@ -73,7 +67,6 @@ type
     dlgSave1: TSaveDialog;
     dlgOpen1: TOpenDialog;
     Userlist1: TMenuItem;
-    btnClose: TButton;
     pgcMain: TPageControl;
     tsMain: TTabSheet;
     tsGraph: TTabSheet;
@@ -89,6 +82,25 @@ type
     Summary1: TMenuItem;
     Graph1: TMenuItem;
     Summary2: TMenuItem;
+    ImageList1: TImageList;
+    ToolBar1: TToolBar;
+    ToolButton1: TToolButton;
+    ToolButton2: TToolButton;
+    cbbUsers: TComboBox;
+    CoolBar1: TCoolBar;
+    ToolButton3: TToolButton;
+    ToolButton4: TToolButton;
+    ToolButton5: TToolButton;
+    ToolButton6: TToolButton;
+    ToolButton7: TToolButton;
+    ToolButton8: TToolButton;
+    ToolButton9: TToolButton;
+    ToolButton11: TToolButton;
+    ToolButton13: TToolButton;
+    ToolButton14: TToolButton;
+    ToolButton15: TToolButton;
+    ToolButton16: TToolButton;
+    ToolButton10: TToolButton;
     procedure FormActivate(Sender: TObject);
     procedure btnNewGaugeClick(Sender: TObject);
     procedure btnRefreshClick(Sender: TObject);
@@ -131,6 +143,14 @@ type
     procedure Summary2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure ToolButton4Click(Sender: TObject);
+    procedure ToolButton6Click(Sender: TObject);
+    procedure ToolButton7Click(Sender: TObject);
+    procedure ToolButton9Click(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure ToolButton13Click(Sender: TObject);
+    procedure ToolButton14Click(Sender: TObject);
+    procedure ToolButton16Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -324,8 +344,15 @@ begin
 end;
 
 procedure TfrmMain.btnClearAllClick(Sender: TObject);
+var
+  I : Integer;
 begin
-  str1.RowCount := 1;
+  for I := 0 to str1.ColCount - 1 do
+    str1.Cols[I].Clear;
+
+  str1.RowCount := 2;
+  str1.FixedRows := 1;
+  iRow := 0;
   with str1 do
     begin
       Cells[0, 0] := 'User';
@@ -567,6 +594,8 @@ var
   txtFile3 : TextFile;
 begin
  // Add/Update Gauges in Gauge List
+  cbbGauges.Clear;
+  cbbGauges.Text := 'Gauge';
   if FileExists('Gauges.txt') <> True then
     begin
       MessageDlg('Error: Cannot Add New Gauge' + #13 + 'Erorr Code: '
@@ -815,7 +844,10 @@ begin
       cbbUsers.Items.Add(sTLine);
     end;
   CloseFile(txtFile6);
-
+   if frmMain.WindowState = wsMaximized then
+    begin
+      ToolButton11.Width := 655;
+    end;
 end;
 
 procedure TfrmMain.FormCreate(Sender: TObject);
@@ -880,6 +912,25 @@ begin
       cbbUsers.Items.Add(sTLine);
     end;
   CloseFile(txtFile6);
+
+  if frmMain.WindowState = wsMaximized then
+    begin
+      ToolButton11.Width := 655;
+    end;
+
+end;
+
+procedure TfrmMain.FormResize(Sender: TObject);
+begin
+  if frmMain.WindowState = wsMaximized then
+    begin
+      ToolButton11.Width := 655;
+    end;
+
+  if (frmMain.Width = 1067) and (frmMain.Height = 605) then
+    begin
+      ToolButton11.Width := 341;
+    end;
 
 end;
 
@@ -956,6 +1007,8 @@ var
   txtFile3 : TextFile;
 begin
   // Add/Update Gauges in Gauge List
+  cbbGauges.Clear;
+  cbbGauges.Text := 'Gauges';
   if FileExists('Gauges.txt') <> True then
     begin
       MessageDlg('Error: Cannot Add New Gauge' + #13 + 'Erorr Code: '
@@ -1219,6 +1272,197 @@ begin
   redSum.Clear;
 end;
 
+procedure TfrmMain.ToolButton13Click(Sender: TObject);
+begin
+  str1.RowCount:= str1.RowCount + 1;
+end;
+
+procedure TfrmMain.ToolButton14Click(Sender: TObject);
+var
+  I : Integer;
+begin
+  for I := 0 to str1.ColCount - 1 do
+    str1.Cols[I].Clear;
+
+  str1.RowCount := 2;
+  str1.FixedRows := 1;
+  iRow := 0;
+  with str1 do
+    begin
+      Cells[0, 0] := 'User';
+      Cells[1, 0] := 'Gauge Name';
+      Cells[2, 0] := 'Date';
+      Cells[3, 0] := 'Time';
+      Cells[4, 0] := 'Reading(mm)';
+      Cells[5, 0] := 'Weather';
+      Cells[6, 0] := 'Empty Status';
+      Cells[7, 0] := 'Gauge Max (mm)';
+      Cells[8, 0] := '% Capacity';
+    end;
+end;
+
+procedure TfrmMain.ToolButton16Click(Sender: TObject);
+begin
+  frmMain.Close;
+end;
+
+procedure TfrmMain.ToolButton4Click(Sender: TObject);
+var
+  sString, sGaugeName, sMaxCap1 : string;
+  iPos : Integer;
+  txtFile3 : TextFile;
+  sTLine, sUsername1 : String;
+  txtFile6 : TextFile;
+begin
+ // Add/Update Gauges in Gauge List
+ cbbUsers.Clear;
+ cbbGauges.Clear;
+ cbbUsers.Text := 'User';
+ cbbGauges.Text := 'Gauge';
+  if FileExists('Gauges.txt') <> True then
+    begin
+      MessageDlg('Error: Cannot Add New Gauge' + #13 + 'Erorr Code: '
+      + 'listntfnd_01', mtError, [mbOK], 0);
+    end
+  else
+    begin
+      AssignFile(txtFile3, 'Gauges.txt');
+      Reset(txtFile3);
+    end;
+
+  while not Eof(txtFile3) do
+    begin
+      Readln(txtFile3, sString);
+      iPos := Pos('$', sString);
+      sGaugeName := Copy(sString, 1, iPos - 1);
+      Delete(sString, 1, iPos + 1);
+
+      sMaxCap1 := sString;
+      cbbGauges.Items.Add(sGaugeName);
+    end;
+  CloseFile(txtFile3);
+
+    AssignFile(txtFile6, 'Users.txt');
+  Reset(txtFile6);
+
+  while not Eof(txtFile6) do
+    begin
+      Readln(txtFile6, sTLine);
+      cbbUsers.Items.Add(sTLine);
+    end;
+end;
+
+procedure TfrmMain.ToolButton6Click(Sender: TObject);
+var
+  iValue : Integer;
+begin
+  sGauge := cbbGauges.Text;
+  sWeather := lbledtWeather.Text;
+  rReading := StrToFloat(lbledtReading.Text);
+  bStatus := chkEmptied.Checked;
+  iMaxCapMain := StrToInt(sMaxCapMain);
+  Date := dtpDate.Date;
+
+  if  not (Ord(UpperCase(FloatToStr(rReading))) IN [65..90]) and
+  (bApplied = True) and (Length(lbledtWeather.Text) > 0) and
+  (Length(lbledtReading.Text) > 0) and (bGetMax = True) then
+    begin
+      if chkUser.Checked = True then
+        begin
+          sUser := cbbUsers.Text;
+        end
+      else
+        begin
+          sUser := InputBox('Add Temporary User', 'Add Name', '');
+        end;
+      Inc(iRow);
+      rCap := ((rReading / iMaxCapMain) * 100);
+      str1.Cells[0, iRow] := sUser;
+      str1.Cells[1, iRow] := sGauge;
+      str1.Cells[2, iRow] := sDate;
+      str1.Cells[3, iRow] := sTime;
+      str1.Cells[4, iRow] := FloatToStrF(rReading, ffNumber, 10, 2);
+      str1.Cells[5, iRow] := UpperCase(sWeather);
+      str1.Cells[7, iRow] := sMaxCapMain;
+      str1.Cells[8, iRow] := FloatToStrF(rCap, ffNumber, 10, 2) + '%';
+
+      if bStatus = True then
+        begin
+          str1.Cells[6, iRow] := 'YES';
+        end
+      else
+        begin
+          str1.Cells[6, iRow] := 'NO';
+        end;
+
+      statMain.Panels[1].Text := 'Last Record: ' + sDate;
+      statMain.Panels[3].Text := 'Unsaved';
+      lbledtWeather.Clear;
+      lbledtReading.Clear;
+      str1.RowCount := str1.RowCount + 1;
+      MessageDlg('Successfully Added Record' + #13 +
+      DateToStr(Now) + #9 + TimeToStr(Now), mtInformation, [mbOK], 0);
+    end
+  else
+    begin
+      iValue := MessageDlg('Please populate all data fields', mtError,
+      [mbRetry, mbCancel], 0);
+      if iValue = mrRetry then
+        begin
+          lbledtReading.SetFocus;
+        end
+      else
+        begin
+          Exit;
+        end;
+    end;
+end;
+
+procedure TfrmMain.ToolButton7Click(Sender: TObject);
+begin
+  lbledtWeather.Clear;
+  lbledtReading.Clear;
+  lbledtReading.SetFocus;
+end;
+
+procedure TfrmMain.ToolButton9Click(Sender: TObject);
+var
+  pixX, pixY : Integer;
+begin
+   PrintGrid(str1, 'Print Records');
+  MessageDlg('Sent to Printer', mtInformation, [mbOK], 0);
+
+   with redSum do
+    begin
+      PlainText := True;
+      Lines.SaveToFile('Lines.txt');
+      Lines.LoadFromFile('Lines.txt');
+      pixX := GetDeviceCaps(Printer.Handle, LOGPIXELSX);
+      pixY := GetDeviceCaps(Printer.Handle, LOGPIXELSY);
+
+      with PageRect do
+        begin
+          Margins.Left := 2 * pixX div 2;
+          Margins.Top := 3 * pixY div 2;
+          Margins.Right := Printer.PageWidth - 3 * pixX div 4;
+          Margins.Bottom := Printer.PageHeight - pixY;
+        end;
+      Print('Summary');
+    end;
+
+      with TPrintDialog.Create(nil) do
+    begin
+      try
+        if Execute then
+          chtMain.Print;
+      finally
+        Free;
+      end;
+    end;
+    MessageDlg('Sent To Printer' + #13 + 'Summary: ' + DateToStr(Now),
+    mtInformation, [mbOK], 0);
+end;
+
 procedure TfrmMain.USer1Click(Sender: TObject);
 var
   sTextLine : String;
@@ -1277,7 +1521,8 @@ var
 begin
   AssignFile(txtFile6, 'Users.txt');
   Reset(txtFile6);
-
+  cbbUsers.Clear;
+  cbbUsers.Text := 'User';
   while not Eof(txtFile6) do
     begin
       Readln(txtFile6, sTLine);

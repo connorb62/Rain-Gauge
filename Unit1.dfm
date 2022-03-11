@@ -1321,7 +1321,7 @@ object frmAbout: TfrmAbout
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object imgMain: TImage
+  object s: TImage
     Left = 0
     Top = 0
     Width = 357
@@ -2489,7 +2489,7 @@ object frmAbout: TfrmAbout
       ''
       'Verison Information'
       'First Edition'
-      'v1.0.0.38 - Windows '
+      'v1.0.0.127 - Windows '
       ''
       'cbell@jeppeboys.co.za'
       '066 202 1724'
