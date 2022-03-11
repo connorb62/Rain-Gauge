@@ -8,7 +8,7 @@ uses
 
 type
   TfrmAbout = class(TForm)
-    imgMain: TImage;
+    s: TImage;
     redt1: TRichEdit;
     btnClose: TButton;
     procedure FormCreate(Sender: TObject);
