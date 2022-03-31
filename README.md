@@ -28,6 +28,7 @@ Adding a record is easy. First select a gauge and get the max capacity. Then sel
 Rain Gauge File information is stored as a `.csv`. You can save rainfall records easily as files for later use by clicking `Save` and `Open` to import saved records or by navigating to the main menu. 
 
 ## Graph and Summarize Records
+![Graph1](Screenshot3.png) ![Graph2](Screenshot4.png) ![Graph3](Screenshot5.png)
 Records can be easily visualized and summarized under the 'Analysis' tab sheet. Once and adequate number of records have been logged, click `Graph` to draw an area graph and `Summary` to show Total and Average rainfall as well as the period of data recording in days. 
 
 ## Printing
@@ -40,12 +41,30 @@ Updates may be regular and will always be made available on the GitHub platform.
 
 ***
 
-# Disclaimer
-Whil every effort has been made to avoid application crashing and misbehaviour responsibility cannot be accepted for such events while using the application. Please report all errors, crashes or bugs to the `Issues` section of this repo. 
+# Disclaimer and License
+Copyright (c) 2022 Connor Bell 
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 # Feedback
 Feedback is greatly appreciated. Please feel free to send feedback in any regard to: 
 - cbell@jeppeboys.co.za
 
 - Published (4 March 2022)
-- Updates (10 March 2022)
+- Updated (31 March 2022)
