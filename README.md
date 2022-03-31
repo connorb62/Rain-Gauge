@@ -1,16 +1,16 @@
 ![Logo](Untitled-2.png)
 ### Rain Gauge 
 - Welcome to the Rain Gauge Application
-- Latest Version: v1.0.0.60
+- Latest Version: v1.0.1.1 
 ### New Changes
-- Bug Fixes 
+- See Latest Release! 
 ### Information
 - © 2022 Connor Bell
 - cbell@jeppeboys.co.za 
 - +27 66 202 1724
 ***
 # What It Looks Like
-![Screenshot](Main.jpg)
+![Screenshot](Screenshot1.png)
 ***
 # Installation
 Please read the following carefully. 
