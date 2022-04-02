@@ -29,7 +29,7 @@ To install Rain Gauge, locate the installer `Rain Gauge vX.X.X.X Installer` `.ex
 ***
  
 # Getting Started 
-Rain Gauge makes recording, logging, graphing and summarizing rainfall easy. When installation is complete, you must add a user and a gauge. To add a use, click `Add User` on the top pane, and enter a name. To add a gauge, navigate to the 'Recording Information' pane and click `Add New`, suppling a name and max capacity. Then refresh both these fields by using the keyboard shortcuts `Ctrl + R` and `Ctrl + Q` or navigate to the menu bar. This information is then stored in a text file, so it is easily accessible upon application relaunch. 
+Rain Gauge makes recording, logging, graphing and summarizing rainfall easy. When installation is complete, you must add a user and a gauge. To add a user, click `Add User` on the top pane, and enter a name. To add a gauge, navigate to the 'Recording Information' pane and click `Add New`, suppling a name and max capacity. Then refresh both these fields by using the keyboard shortcuts `Ctrl + R` and `Ctrl + Q` or navigate to the menu bar. This information is then stored in a text file, so it is easily accessible upon application relaunch. 
 ## Adding a record
 Adding a record is easy. First select a gauge and get the max capacity. Then select the date and time of reading and click `Apply`. It is important to click apply to get the correct date. Then supply the reading and weather (at time of reading) information. You can also check the if you recorded it or someone else did, and whether it was emptied. To record, click `Apply`. 
 
@@ -38,7 +38,7 @@ Rain Gauge File information is stored as a `.csv`. You can save rainfall records
 
 ## Graph and Summarize Records
 ![Graph1](Screenshot3.png) ![Graph2](Screenshot4.png) ![Graph3](Screenshot5.png)
-Records can be easily visualized and summarized under the 'Analysis' tab sheet. Once and adequate number of records have been logged, click `Graph` to draw an area graph and `Summary` to show Total and Average rainfall as well as the period of data recording in days. 
+Records can be easily visualized and summarized under the 'Analysis' tab sheet. Once and adequate number of records have been logged, click `Graph` to draw daily, monthly and annual graphs and `Summary` to show total and average rainfall as well as the period of data recording in days, monthly and annual rainfall totals. 
 
 ## Printing
 Records, Graphs and summaries can be printed. Navigate to the main menu.
@@ -74,6 +74,6 @@ SOFTWARE.
 # Feedback
 Feedback is greatly appreciated. Please feel free to send feedback in any regard to: 
 - cbell@jeppeboys.co.za
-
-- Published (04 March 2022)
-- Updated (02 April 2022)
+***
+Published (04 March 2022)
+Updated (02 April 2022)
