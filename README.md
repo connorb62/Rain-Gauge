@@ -14,7 +14,7 @@
 ***
 # Installation
 Please read the following carefully. 
-Rain Gauge makes use of text files to store and log user and gauge information. When installing the application to the Programs folder, these files become inaccessible. Please make sure you install the application to outside system folders. A preferable installation location would be `Documents`. 
+Rain Gauge makes use of text files to store and log user and gauge information. When installing the application to the Programs folder, these files become inaccessible (Only when installed for all users). This issue can be avoided by installing the application for the current user only. 
 To install Rain Gauge, locate the installer `Rain Gauge vX.X.X.X Installer` `.exe` file and run it. 
 
 ***
