@@ -70,10 +70,10 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
+***
 # Feedback
 Feedback is greatly appreciated. Please feel free to send feedback in any regard to: 
 - cbell@jeppeboys.co.za
 ***
-Published (04 March 2022)
-Updated (02 April 2022)
+- Published (04 March 2022)
+- Updated (02 April 2022)
