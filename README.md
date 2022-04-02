@@ -32,7 +32,7 @@ Rain Gauge File information is stored as a `.csv`. You can save rainfall records
 Records can be easily visualized and summarized under the 'Analysis' tab sheet. Once and adequate number of records have been logged, click `Graph` to draw an area graph and `Summary` to show Total and Average rainfall as well as the period of data recording in days. 
 
 ## Printing
-Records, Graphs and summaries can be printed. Navigate to the main menu and print your desired information.
+Records, Graphs and summaries can be printed. Navigate to the main menu.
 
 ***
 
@@ -66,5 +66,5 @@ SOFTWARE.
 Feedback is greatly appreciated. Please feel free to send feedback in any regard to: 
 - cbell@jeppeboys.co.za
 
-- Published (4 March 2022)
-- Updated (31 March 2022)
+- Published (04 March 2022)
+- Updated (02 April 2022)
