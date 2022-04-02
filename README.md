@@ -8,6 +8,15 @@
 - © 2022 Connor Bell
 - cbell@jeppeboys.co.za 
 - +27 66 202 1724
+### Supported Versions
+| Version | Supported          | Support End |
+| ------- | ------------------ | ------- |
+| v1.0.0.40   | :x: |  11 March 2022 |
+| v1.0.0.60    | :x:                | 18 March 2022 | 
+| v1.0.0.127   | :white_check_mark: | 31 March 2023 |
+| v1.0.0.127 SE  | :x:                | 31 March 2022|
+| v1.0.1.1   | :white_check_mark: | 31 March 2027|
+
 ***
 # What It Looks Like
 ![Screenshot](Screenshot1.png)
