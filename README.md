@@ -71,6 +71,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ***
+# Future Goals 
+- The ability to determine the type of rainfall based on the given records. 
+- Predict future rainfall patterns. 
+***
 # Feedback
 Feedback is greatly appreciated. Please feel free to send feedback in any regard to: 
 - cbell@jeppeboys.co.za
